@@ -11,6 +11,6 @@ abstract class Enums
 
     const TRANSACTION_TYPES = [
         'DEPOSIT',
-        'WITHDRAW'
+        'WITHDRAWL'
     ];
 }

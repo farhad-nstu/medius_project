@@ -3,17 +3,22 @@
     <h6> Welcome, {{ $user->name }}. Your current balance is {{ $user->balance }} BDT.</h6>
     <br>
 
+    @if(Session::has('message'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('message') }}
+        </div>
+    @endif
     <div class="table">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#withdrawlModal">Deposit</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#depositModal">Withdrawl</button>
 
         <!-- Modal -->
-        <div class="modal fade" id="withdrawlModal" tabindex="-1" aria-labelledby="withdrawlModalLabel" aria-hidden="true">
+        <div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <form action="{{ route('deposit') }}" method="POST">
+                <form action="{{ route('withdrawl') }}" method="POST">
                     @csrf
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="withdrawlModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="depositModalLabel">Modal title</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -30,12 +35,6 @@
         </div>
 
         <br>
-
-        @if(Session::has('message'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('message') }}
-            </div>
-        @endif
 
         <table class="table datatable">
             <thead>
@@ -59,3 +58,4 @@
         </table>
     </div>
 @endsection
+
