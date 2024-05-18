@@ -9,6 +9,7 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'guest'], function () {
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::match(['GET','POST'], '/users', [AuthController::class, 'register'])->name('register');
     Route::match(['GET','POST'], '/login', [AuthController::class, 'login'])->name('login');
 });
